@@ -10,7 +10,7 @@
 				<div class="panel-body">
 					<div id="base-view">
 						<div class="base-item">
-							<span class="col-lg-2">Username</span>
+							<span class="col-lg-2">用户名</span>
 							<span>{{ Auth::user()->name }}</span>
 						</div>
 					</div>

@@ -11,6 +11,8 @@
 |
 */
 
+Blade::setRawTags('{{', '}}');
+
 Route::get('/', 'WelcomeController@index');
 
 Route::controllers([
@@ -41,5 +43,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('ad/waiting-list', 'AdController@getWaitingList');
     Route::get('ad/passed-list', 'AdController@getPassedList');
     Route::get('ad/rejected-list', 'AdController@getRejectedList');
+    Route::get('ad/{id}/pass', 'AdController@getPass');
+    Route::get('ad/{id}/reject', 'AdController@getReject');
     Route::resource('ad', 'AdController');
 });
