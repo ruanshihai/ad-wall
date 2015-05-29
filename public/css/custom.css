@@ -32,5 +32,9 @@
 }
 
 .base-item {
-	min-height: 36px;
+	min-height: 40px;
+}
+
+.table-break {
+	word-break:break-all;
 }

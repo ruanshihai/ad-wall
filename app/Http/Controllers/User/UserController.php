@@ -107,9 +107,8 @@ class UserController extends Controller {
 
         $user = User::find(Input::get('id'));
         $user->address = Input::get('address');
-        //$user->address = Input::get('address');
-        //$user->longitude = Input::get('longitude');
-        //$user->latitude = Input::get('latitude');//Auth::user()->id;
+        $user->longitude = Input::get('longitude');
+        $user->latitude = Input::get('latitude');
 
         if ($user->save()) {
             return Redirect::back();

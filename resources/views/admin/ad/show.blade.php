@@ -9,6 +9,9 @@
 
   <div class="panel-body">
     <div id="base-view">
+      <div style="float:right;">
+        {{ HTML::image('uploads/pictures/'.$ad->img_path, $ad->img_path) }}
+      </div>
       <div class="base-item">
         <span class="col-lg-2">广告类型</span>
         <span><?php $type_items = array('新品', '促销', '特卖') ?> {{ $type_items[$ad->type] }}</span>

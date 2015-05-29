@@ -47,3 +47,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('ad/{id}/reject', 'AdController@getReject');
     Route::resource('ad', 'AdController');
 });
+
+//Route::get('search', 'Search/SearchController@getSearchAds');
+
+Route::group(['prefix' => 'search', 'namespace' => 'Search'], function()  
+{
+    Route::get('ad', 'SearchController@getSearchAds');
+    Route::get('user', 'SearchController@getUserInfo');
+});

@@ -9,7 +9,6 @@ use App\User;
 use App\Ad;
 
 use Redirect, Input, Auth;
-use DB, URL;
 
 class AdController extends Controller {
 
@@ -51,6 +50,8 @@ class AdController extends Controller {
         $ad = new Ad;
         $ad->uid = Auth::user()->id;
         $ad->uname = Auth::user()->name;
+        $ad->longitude = Auth::user()->longitude;
+        $ad->latitude = Auth::user()->latitude;
         $ad->title = Input::get('title');
         $ad->type = Input::get('type');
         $ad->status = 0;
@@ -242,7 +243,7 @@ class AdController extends Controller {
 	 */
 	public function getWaitingList()
 	{
-		$ads = Ad::whereRaw('uid = ? and status = ? or status = ?', [Auth::user()->id, 0, 3])->orderBy('created_at', 'desc')->paginate(10);
+		$ads = Ad::whereRaw('uid = ? and (status = ? or status = ?)', [Auth::user()->id, 0, 3])->orderBy('created_at', 'desc')->paginate(10);
 
 		return view('user.ad.waitinglist')->withAds($ads);
 	}

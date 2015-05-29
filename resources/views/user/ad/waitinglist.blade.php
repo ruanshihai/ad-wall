@@ -6,7 +6,7 @@
 
   <div class="panel-body">
 
-    <table class="table table-striped">
+    <table class="table table-striped table-break">
       <tr class="row">
         <th class="col-lg-2">标题</th>
         <th class="col-lg-2">起始日期</th>

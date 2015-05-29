@@ -9,7 +9,6 @@ use App\User;
 use App\Ad;
 
 use Redirect, Input, Auth;
-use DB, URL;
 
 class AdController extends Controller {
 

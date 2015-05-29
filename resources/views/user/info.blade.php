@@ -152,6 +152,7 @@
 		// 添加定位控件
 		var geolocationControl = new BMap.GeolocationControl();
 		geolocationControl.addEventListener("locationSuccess", function(e){
+			/*
 			// 定位成功事件
 			var address = '';
 			address += e.addressComponent.province;
@@ -160,6 +161,7 @@
 			address += e.addressComponent.street;
 			address += e.addressComponent.streetNumber;
 			alert("当前定位地址为：" + address);
+			*/
 		});
 		geolocationControl.addEventListener("locationError",function(e){
 			// 定位失败事件
