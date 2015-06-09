@@ -65,7 +65,7 @@ class AdController extends Controller {
             if (($_FILES['img']['type']=='image/gif' || $_FILES['img']['type']=='image/jpg' 
             	|| $_FILES['img']['type']=='image/jpeg' || $_FILES['img']['type']=='image/bmp' 
             	|| $_FILES['img']['type']=='image/png') 
-                && ($_FILES['img']['size']<2048000))
+                && ($_FILES['img']['size']<5120000))
             {
                 $fname = date('Y-m-d-H-i-s', time()).'-'.mt_rand(0, 1000);
                 $info = pathinfo($_FILES['img']['name']);
@@ -88,8 +88,8 @@ class AdController extends Controller {
                         elseif ($extension=='bmp')
                             $img_r = imagecreatefromwbmp($_FILES['img']['tmp_name']);
                         list($width, $height) = getimagesize($_FILES['img']['tmp_name']);
-                        $dst_r = ImageCreateTrueColor(150, 200);
-                        imagecopyresampled($dst_r, $img_r, 0, 0, 0, 0, 150, 200, $width, $height);
+                        $dst_r = ImageCreateTrueColor(200, 150);
+                        imagecopyresampled($dst_r, $img_r, 0, 0, 0, 0, 200, 150, $width, $height);
                         header('Content-Type:'.$_FILES['img']['type']);
                         imagejpeg($dst_r, 'uploads/pictures/'.$fname.'.'.$extension, 100);
                         imagedestroy($img_r);
@@ -170,7 +170,7 @@ class AdController extends Controller {
 	            if (($_FILES['img']['type']=='image/gif' || $_FILES['img']['type']=='image/jpg' 
 	            	|| $_FILES['img']['type']=='image/jpeg' || $_FILES['img']['type']=='image/bmp' 
 	            	|| $_FILES['img']['type']=='image/png') 
-	                && ($_FILES['img']['size']<2048000))
+	                && ($_FILES['img']['size']<5120000))
 	            {
 	                $fname = date('Y-m-d-H-i-s', time()).'-'.mt_rand(0, 1000);
 	                $info = pathinfo($_FILES['img']['name']);
@@ -193,8 +193,8 @@ class AdController extends Controller {
 	                        elseif ($extension=='bmp')
 	                            $img_r = imagecreatefromwbmp($_FILES['img']['tmp_name']);
 	                        list($width, $height) = getimagesize($_FILES['img']['tmp_name']);
-	                        $dst_r = ImageCreateTrueColor(150, 200);
-	                        imagecopyresampled($dst_r, $img_r, 0, 0, 0, 0, 150, 200, $width, $height);
+	                        $dst_r = ImageCreateTrueColor(200, 150);
+	                        imagecopyresampled($dst_r, $img_r, 0, 0, 0, 0, 200, 150, $width, $height);
 	                        header('Content-Type:'.$_FILES['img']['type']);
 	                        imagejpeg($dst_r, 'uploads/pictures/'.$fname.'.'.$extension, 100);
 	                        imagedestroy($img_r);

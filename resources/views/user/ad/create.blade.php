@@ -27,7 +27,6 @@
       <select id="type" name="type" class="form-control">
         <option value="0">新品</option>
         <option value="1">促销</option>
-        <option value="2">特卖</option>
       </select>
       <br>
       <label for="img">封面图片上传：</label>

@@ -50,7 +50,9 @@ class AdController extends Controller {
 	 */
 	public function show($id)
 	{
-		return view('admin.ad.show')->withAd(Ad::find($id));
+		$ad = Ad::find($id);
+		$user = User::find($ad->uid);
+		return view('admin.ad.show')->withAd($ad)->withUser($user);
 	}
 
 	/**

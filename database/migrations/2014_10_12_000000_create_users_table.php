@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->integer('type')->unsigned()->default(1);
+			$table->string('phone', 16);
 			$table->string('address');
 			$table->float('longitude');
 			$table->float('latitude');

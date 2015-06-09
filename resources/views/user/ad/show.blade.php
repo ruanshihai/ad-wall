@@ -14,7 +14,7 @@
       </div>
       <div class="base-item">
         <span class="col-lg-2">广告类型</span>
-        <span><?php $type_items = array('新品', '促销', '特卖') ?> {{ $type_items[$ad->type] }}</span>
+        <span><?php $type_items = array('新品', '促销') ?> {{ $type_items[$ad->type] }}</span>
       </div>
       <div class="base-item">
         <span class="col-lg-2">状态</span>

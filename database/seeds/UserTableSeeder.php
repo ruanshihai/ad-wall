@@ -9,15 +9,16 @@ class UserTableSeeder extends Seeder {
   {
     DB::table('users')->delete();
 
-    for ($i=0; $i < 20; $i++) {
+    for ($i=1; $i <= 200; $i++) {
       User::create([
-        'name'		=> 'person'.$i,
+        'name'		=> 'Uname'.$i,
         'email'		=> $i.'@qq.com',
         'password'	=> 'w8yjkhsadjskdfhfshjkhsahasdkljasdddddddddddddddsajkdbahewjsd'	,
         'type'		=> 1,
-        'address'	=> 'Sun Yat-sen University',
-        'longitude' => 110.15+$i,
-        'latitude'  => 28.21+$i,
+        'phone' => '13824477'.($i+100),
+        'address'	=> 'Sun Yat-sen University ('.$i.')',
+        'longitude' => 113.398238+$i/5000,
+        'latitude'  => 23.06668+$i/5000,
       ]);
     }
   }

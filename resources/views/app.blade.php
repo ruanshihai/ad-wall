@@ -74,7 +74,7 @@
   @endif
   
   <div id="footer" style="text-align: center;">
-    Copyright © 2015 <a href="http://ad-wall.com">AD-WALL</a> 版权所有
+    Copyright © 2015 <a href="/">AD-WALL</a> 版权所有
   </div>
 
 </body>  

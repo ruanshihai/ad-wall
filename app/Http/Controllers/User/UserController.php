@@ -102,10 +102,14 @@ class UserController extends Controller {
 	public function postInfo(Request $request)
 	{
 		$this->validate($request, [
+			//'phone' => 'required|regex:/^1[3-5,8]{1}[0-9]{9}$/|regex:/^([0-9]{3,4}-)?[0-9]{7,8}$/',
+			'phone' => 'required|max:12',
 			'address' => 'required|max:255',
         ]);
 
         $user = User::find(Input::get('id'));
+        $user->name = Input::get('name');
+        $user->phone = Input::get('phone');
         $user->address = Input::get('address');
         $user->longitude = Input::get('longitude');
         $user->latitude = Input::get('latitude');

@@ -1,0 +1,89 @@
+/*
+ * System: AD-WALL
+ */
+
+
+Database
+    ad_wall
+
+
+Tables
+    1. users
+    +----------------+------------------+------+-----+---------------------+----------------+
+    | Field          | Type             | Null | Key | Default             | Extra          |
+    +----------------+------------------+------+-----+---------------------+----------------+
+    | id             | int(10) unsigned | NO   | PRI | NULL                | auto_increment |
+    | name           | varchar(255)     | NO   |     | NULL                |                |
+    | email          | varchar(255)     | NO   | UNI | NULL                |                |
+    | password       | varchar(60)      | NO   |     | NULL                |                |
+    | type           | int(10) unsigned | NO   |     | 1                   |                |
+    | phone          | varchar(16)      | NO   |     | NULL                |                |
+    | address        | varchar(255)     | NO   |     | NULL                |                |
+    | longitude      | double(8,2)      | NO   |     | NULL                |                |
+    | latitude       | double(8,2)      | NO   |     | NULL                |                |
+    | remember_token | varchar(100)     | YES  |     | NULL                |                |
+    | created_at     | timestamp        | NO   |     | 0000-00-00 00:00:00 |                |
+    | updated_at     | timestamp        | NO   |     | 0000-00-00 00:00:00 |                |
+    +----------------+------------------+------+-----+---------------------+----------------+
+    NOTE:
+    type: 0-administrator, 1-seller
+
+    2. ads
+    +------------+------------------+------+-----+---------------------+----------------+
+    | Field      | Type             | Null | Key | Default             | Extra          |
+    +------------+------------------+------+-----+---------------------+----------------+
+    | id         | int(10) unsigned | NO   | PRI | NULL                | auto_increment |
+    | uid        | int(10) unsigned | NO   |     | NULL                |                |
+    | title      | varchar(255)     | NO   |     | NULL                |                |
+    | img_path   | varchar(255)     | NO   |     | NULL                |                |
+    | type       | int(10) unsigned | NO   |     | NULL                |                |
+    | content    | text             | NO   |     | NULL                |                |
+    | uname      | varchar(255)     | NO   |     | NULL                |                |
+    | longitude  | double(8,2)      | NO   |     | NULL                |                |
+    | latitude   | double(8,2)      | NO   |     | NULL                |                |
+    | begin_at   | date             | NO   |     | NULL                |                |
+    | end_at     | date             | NO   |     | NULL                |                |
+    | status     | int(10) unsigned | NO   |     | 0                   |                |
+    | page_view  | int(10) unsigned | NO   |     | 0                   |                |
+    | page_click | int(10) unsigned | NO   |     | 0                   |                |
+    | created_at | timestamp        | NO   |     | 0000-00-00 00:00:00 |                |
+    | updated_at | timestamp        | NO   |     | 0000-00-00 00:00:00 |                |
+    +------------+------------------+------+-----+---------------------+----------------+
+    NOTE:
+    status: 0-待审核, 1-已通过, 2-已回绝, 3-待复核
+    type: 0-新品, 1-促销
+
+    3. comments
+
+
+URL
+    /                                   网站首页，项目介绍
+    auth/register                       注册
+    auth/login                          登录
+    password/email                      重置密码
+    user/home                           用户首页
+    user/info                           用户信息
+    user/ad/create                      用户创建广告
+    user/ad/waiting-list?page=1         用户待审核列表
+    user/ad/rejected-list?page=1        用户已回绝列表
+    user/ad/passed-list?page=1          用户已通过列表
+    user/ad/{id}                        用户查看广告
+    user/ad/{id}/edit                   用户编辑广告
+    admin/home                          管理员首页
+    admin/info                          管理员信息
+    admin/ad/waiting-list?page=1        管理员待审核列表
+    admin/ad/rejected-list?page=1       管理员已回绝列表
+    admin/ad/passed-list?page=1         管理员已通过列表
+    admin/ad/{id}                       管理员查看广告
+    uploads/pictures/img_path           服务器上的图片
+    search/user                         以Json格式返回所有商家的信息： {'name', 'address', 'lng', 'lat'}
+    search/user?id=1                    以Json格式返回id为1的商家的信息： {'name', 'address', 'lng', 'lat'}
+    search/ad?uid=100                   以Json格式返回搜索结果的第1个页面(包括一共有多少个页面等元信息、每条广告的完整信息)，搜索条件：{广告所属商家id为100}
+    search/ad?type=0&region=0.2&lng=113.23333&lat=23.16667&keyword=奶茶&page=1    以Json格式返回搜索结果的第1个页面(包括一共有多少个页面等元信息、每条广告的完整信息)，搜索条件：{类型为0即新品，在经纬度(113.23333, 23.16667)附近0.2千米, 关键词为奶茶}，region省略则默认为0.2，不是每一个参数都是必须的
+
+
+数据库导入命令备忘
+    php artisan migrate
+    php artisan migrate:rollback
+    composer dump-autoload  
+    php artisan db:seed

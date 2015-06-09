@@ -13,8 +13,20 @@
         {{ HTML::image('uploads/pictures/'.$ad->img_path, $ad->img_path) }}
       </div>
       <div class="base-item">
+        <span class="col-lg-2">商家名称</span>
+        <span>{{ $user->name }}</span>
+      </div>
+      <div class="base-item">
+        <span class="col-lg-2">电话</span>
+        <span>{{ $user->phone }}</span>
+      </div>
+      <div class="base-item">
+        <span class="col-lg-2">地址</span>
+        <span>{{ $user->address }}</span>
+      </div>
+      <div class="base-item">
         <span class="col-lg-2">广告类型</span>
-        <span><?php $type_items = array('新品', '促销', '特卖') ?> {{ $type_items[$ad->type] }}</span>
+        <span><?php $type_items = array('新品', '促销') ?> {{ $type_items[$ad->type] }}</span>
       </div>
       <div class="base-item">
         <span class="col-lg-2">状态</span>

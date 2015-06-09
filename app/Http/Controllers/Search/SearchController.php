@@ -19,6 +19,7 @@ class SearchController extends Controller {
 	 */
 	public function getSearchAds(Request $request)
 	{
+		$uid = $request->input('uid');
 		$type = $request->input('type');
 		$region = $request->input('region', 0.2);
 		$lng = $request->input('lng');
@@ -30,8 +31,17 @@ class SearchController extends Controller {
 		$dlng = rad2deg($dlng);
 		$dlat = $region/$earthRadius;
 		$dlat = rad2deg($dlat);
+
+		//return 'region='.$region.', lnt='.$lng.', lat='.$lat.', dlng='.$dlng.', dlat='.$dlat;
 		
-		if ($type)
+		if ($uid)
+		{
+			$ads = Ad::where('uid', $uid);
+			$ads = $ads->where('status', 1)->paginate(10);
+
+			return $ads->toJson();
+		}
+		else if ($type)
 		{
 			$ads = Ad::where('type', $type);
 			if ($lng && $lat)
@@ -43,7 +53,7 @@ class SearchController extends Controller {
 			{
 				$ads = $ads->where('title', 'like', '%'.$keyword.'%');
 			}
-			$ads = $ads->paginate(10);
+			$ads = $ads->where('status', 1)->paginate(10);
 
 			return $ads->toJson();
 		}
@@ -55,14 +65,14 @@ class SearchController extends Controller {
 			{
 				$ads = $ads->where('title', 'like', '%'.$keyword.'%');
 			}
-			$ads = $ads->paginate(10);
+			$ads = $ads->where('status', 1)->paginate(10);
 			
 			return $ads->toJson();
 		}
 		else if ($keyword)
 		{
 			$ads = Ad::where('title', 'like', '%'.$keyword.'%');
-			$ads = $ads->paginate(10);
+			$ads = $ads->where('status', 1)->paginate(10);
 			
 			return $ads->toJson();
 		}
@@ -75,9 +85,16 @@ class SearchController extends Controller {
 	 */
 	public function getUserInfo(Request $request)
 	{
-		$userInfo = User::select('name', 'address', 'longitude as lng', 'latitude as lat')->find($request->input('id'));
+		$id = $request->input('id');
 
-		return $userInfo->toJson();
+		if ($id) {
+			$userInfo = User::select('name', 'phone', 'address', 'longitude as lng', 'latitude as lat')->find($id);
+			return $userInfo->toJson();
+		} else {
+			$allUserInfo = User::select('name', 'phone', 'address', 'longitude as lng', 'latitude as lat')->get();
+			return $allUserInfo->toJson();
+		}
+
 	}
 
 }

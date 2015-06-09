@@ -23,6 +23,10 @@
 							<span>{{ Auth::user()->name }}</span>
 						</div>
 						<div class="base-item">
+							<span class="col-lg-2">电话</span>
+							<span>{{ Auth::user()->phone }}</span>
+						</div>
+						<div class="base-item">
 							<span class="col-lg-2">地址</span>
 							<span>{{ Auth::user()->address }}</span>
 						</div>
@@ -41,7 +45,11 @@
 							</div>
 							<div class="base-item">
 								<span class="col-lg-2">商家名称</span>
-								<span>{{ Auth::user()->name }}</span>
+								<input type="text" id="name" name="name" style="width:250px" required="required" value="{{ Auth::user()->name }}">
+							</div>
+							<div class="base-item">
+								<span class="col-lg-2">电话</span>
+								<input type="text" id="phone" name="phone" style="width:250px" required="required" value="{{ Auth::user()->phone }}">
 							</div>
 							<div class="base-item">
 								<span class="col-lg-2">地址</span>

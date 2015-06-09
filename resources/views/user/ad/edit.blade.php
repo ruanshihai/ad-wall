@@ -26,7 +26,7 @@
       广告类型：
       <br>
       <select id="type" name="type" class="form-control">
-        <?php $type_items = array('新品', '促销', '特卖') ?>
+        <?php $type_items = array('新品', '促销') ?>
         <?php for ($i=0; $i<count($type_items); $i++){ ?>
           <option value="{{ $i }}" @if ($ad->type == $i) {{ "selected='selected'" }} @endif >{{ $type_items[$i] }}</option>
         <?php } ?>

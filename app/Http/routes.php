@@ -48,8 +48,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::resource('ad', 'AdController');
 });
 
-//Route::get('search', 'Search/SearchController@getSearchAds');
-
 Route::group(['prefix' => 'search', 'namespace' => 'Search'], function()  
 {
     Route::get('ad', 'SearchController@getSearchAds');
