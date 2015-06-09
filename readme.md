@@ -1,4 +1,4 @@
-![AD-WALL](public/image/ad_wall_logo.jpg)
+![AD-WALL](public/image/ad_wall_logo_300_300.jpg)
 ##AD-WALL是什么?
 广告墙，一个周边商铺广告的推送平台
 
